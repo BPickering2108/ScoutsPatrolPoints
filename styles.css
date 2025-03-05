@@ -1,0 +1,290 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.color-pickers {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.progress-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Increased gap between bars */
+    align-items: flex-end;
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.progress-container {
+    width: 30px;
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 100%;
+    transition: height 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    top: -20px;
+    font-size: 14px;
+    color: #000;
+}
+
+.label-bottom {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+}
+
+#reset-button {
+    margin-top: 40px; /* Increased space above the reset button */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Increased space above the login prompt */
+}
+
+#username, #password {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#auth-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.adjust-buttons {
+    display: none;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.adjust-buttons button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.adjust-buttons .minus-button {
+    position: absolute;
+    left: -40px; /* Adjust as needed */
+}
+
+.adjust-buttons .plus-button {
+    position: absolute;
+    right: -40px; /* Adjust as needed */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .progress-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .progress-container {
+        width: 50px;
+        height: 150px;
+    }
+
+    .label {
+        font-size: 12px;
+    }
+
+    .label-bottom {
+        font-size: 12px;
+    }
+
+    #reset-button {
+        margin-top: 20px;
+    }
+
+    #auth-container {
+        margin-top: 10px;
+    }
+
+    #username, #password {
+        font-size: 14px;
+    }
+
+    #auth-button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .progress-wrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .progress-container {
+        width: 40px;
+        height: 120px;
+    }
+
+    .label {
+        font-size: 10px;
+    }
+
+    .label-bottom {
+        font-size: 10px;
+    }
+
+    #reset-button {
+        margin-top: 10px;
+    }
+
+    #auth-container {
+        margin-top: 5px;
+    }
+
+    #username, #password {
+        font-size: 12px;
+    }
+
+    #auth-button {
+        font-size: 12px;
+    }
+}
