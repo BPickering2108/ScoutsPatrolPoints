@@ -1,11 +1,177 @@
-header {
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E3F2FD;
+    color: #333;
+    height: 100%;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0
+}
+
+/* Headers */
+h1, h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: normal;
+}
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+    text-align: center;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button Container Styling */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 20px; /* Space between buttons */
+    margin-top: 50px; /* Space above the buttons */
+}
+
+/* Button Styling */
+.button-container a {
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-container a:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Lift on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.button-container a:active {
+    transform: translateY(2px); /* Button press effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Settings Page Container */
+.settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px
+}
+
+/* Forms */
+.form-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 80vh; /* Set height for centering */
+    flex-direction: column; /* Stack form elements vertically */
+    padding: 20px; /* Add space inside */
+    text-align: center; /* Center text */
+}
+
+input[type="text"],
+input[type="password"] {
     width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #E3F2FD;
+}
+
+.progress-wrapper {
+    text-align: center;
+    width: 60px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 100%;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.progress-fill {
+    width: 100%;
+    height: 0%;
+    min-height: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 20px;
+    transition: height 0.5s ease, min-height 0.5s ease;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.progress-label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Header and Navigation */
+header {
     background-color: #333;
     padding: 10px 0;
+    color: white;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
@@ -32,7 +198,7 @@ nav ul li a:hover {
     position: absolute;
     background-color: #333;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -52,22 +218,52 @@ nav ul li a:hover {
     display: block;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+/* Popups */
+#popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 16px;
 }
 
-h2 {
-    text-align: center;
-    margin-top: 20px; 
+#popup.error {
+    background-color: #f44336; /* Red background for errors */
 }
 
+/* Messages */
+.error-message {
+    color: #f44336; /* Red for errors */
+    background-color: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success-message {
+    color: #4CAF50; /* Green for success */
+    background-color: #e6ffe6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Footer */
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: #f8f8f8;
+    padding: 10px;
+    background-color: #333;
     font-size: 14px;
-    color: #333;
+    color: #ffffff;
+    margin-top: auto;
 }
 
 footer p {

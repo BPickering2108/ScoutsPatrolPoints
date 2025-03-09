@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Handle .php files for specific pages
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(index|login|monScouts|wedScouts|settings|create_user|account|auth_check|footer|header|resetPoints|updateColours|updatePoints|unauthorised|resetPassword)/?$ $1.php [L]
+
+# Ensure trailing slash for directories (excludes files and directories already existing)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*[^/])$ /$1/ [R=301,L]

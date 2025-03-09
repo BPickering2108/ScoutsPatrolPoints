@@ -1,52 +1,95 @@
 <?php
-// Include the database connection file
-include './connection.php';
+session_start();
+include 'connection.php'; // Include the database connection
 
-// Enable error reporting for debugging
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// Ensure only logged-in users with the "Section_Leadership" role can access this page
+$user_id = $_SESSION['user_id']; // Get the user ID from the session
+$query = "SELECT role FROM users WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 
-// Check if the form is submitted
+if (!$user || $user['role'] !== "Section_Leadership") {
+    header("Location: unauthorized.php"); // Redirect to an unauthorized access page
+    exit();
+}
+
+// Handle form submission for creating a new user
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve and sanitize user inputs
     $username = trim($_POST["username"]);
     $password = trim($_POST["password"]);
+    $role = trim($_POST["role"]); // Get the selected role from the form
 
-    // Validate inputs
-    if (empty($username) || empty($password)) {
-        die("Username and password cannot be empty.");
-    }
-
-    // Check for duplicate username
-    $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-        die("Username is already taken.");
-    }
-
-    $stmt->close();
-
-    // Hash the password securely
-    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-
-    // Set the role
-    $role = 'Section_Leadership';
-
-    // Insert the new user into the database
-    $stmt = $conn->prepare("INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $hashed_password, $role);
-
-    if ($stmt->execute()) {
-        echo "User created successfully with role: $role";
+    if (empty($username) || empty($password) || empty($role)) {
+        $error_message = "All fields are required.";
     } else {
-        echo "Error: " . $stmt->error;
-    }
+        // Check for duplicate username
+        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
 
-    $stmt->close();
-    $conn->close();
+        if ($stmt->num_rows > 0) {
+            $error_message = "Username is already taken.";
+        } else {
+            // Hash the password securely
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+            // Insert the new user into the database
+            $stmt = $conn->prepare("INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $username, $hashed_password, $role);
+
+            if ($stmt->execute()) {
+                $success_message = "User created successfully with role: $role";
+            } else {
+                $error_message = "Error: " . $stmt->error;
+            }
+        }
+        $stmt->close();
+    }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Create User</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <?php include 'header.php'; ?>
+        <h1>Create User</h1>
+        <main>
+            <!-- Display error or success messages -->
+            <?php if (isset($error_message)): ?>
+                <div class="error-message"><?= htmlspecialchars($error_message) ?></div>
+            <?php endif; ?>
+            <?php if (isset($success_message)): ?>
+                <div class="success-message"><?= htmlspecialchars($success_message) ?></div>
+            <?php endif; ?>
+
+            <!-- Create New User Form -->
+            <div class="form-container">
+                <form action="createUser.php" method="POST">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <br><br>
+                    <label for="role">Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select a role</option>
+                        <option value="Section_Leadership">Section Leadership</option>
+                        <option value="Section_Member">Section Member</option>
+                    </select>
+                    <br><br>
+                    <button type="submit">Create User</button>
+                </form>
+            </div>
+        </main>
+        <?php include 'footer.php'; ?>
+    </body>
+</html>
