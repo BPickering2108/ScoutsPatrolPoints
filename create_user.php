@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <!-- Create New User Form -->
             <div class="form-container">
-                <form action="createUser.php" method="POST">
+                <form action="create_user.php" method="POST">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
                     <br><br>
