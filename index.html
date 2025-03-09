@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WSSG Patrol Points</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="index" class="dropbtn">Home</a>
+                        <div class="dropdown-content">
+                            <a href="monScouts">Monday Scouts</a>
+                            <a href="wedScouts">Wednesday Scouts</a>
+                        </div>
+                    </li>
+                    <li><a href="settings">Settings</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Weymouth South Scout Group</h1>
+        <h2>Patrol Points</h2>
+    </body>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Bradley Pickering, Dorset Scouts</p>
+        <p>Last Updated: <span id="lastUpdated"></span></p>
+    </footer>
+
+    <script>
+        // Auto-update the year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Display the last updated date
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('lastUpdated').textContent = new Date(document.lastModified).toLocaleDateString('en-GB', options);
+    </script>
+</html>
