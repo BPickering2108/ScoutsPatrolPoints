@@ -106,6 +106,15 @@ if ($result_wed && $result_wed->num_rows > 0) {
                 <button type="submit">Reset Wednesday Points</button>
             </form>
 
+            <!-- User Management -->
+            <h2>User Management</h2>
+            <form action="resetPassword" method="post">
+                <button type="submit">Reset Password</button>
+            </form>
+            <form action="create_user" method="post">
+                <button type="submit">Create User</button>
+            </form>
+
             <!-- Popup for Messages -->
             <div id="popup"></div>
         </main>
