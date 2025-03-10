@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $query = "UPDATE $table SET $operation LIMIT 1";
     if ($conn->query($query)) {
         $friendlyPageName = isset($pageNames[$page]) ? $pageNames[$page] : "Unknown Page";
-        echo "Points updated successfully for $patrol in $friendlyPageName.";
+        echo "Points updated successfully for " . htmlspecialchars($patrol, ENT_QUOTES, 'UTF-8') . " in " . htmlspecialchars($friendlyPageName, ENT_QUOTES, 'UTF-8') . ".";
     } else {
         echo "Error updating points: " . $conn->error;
     }

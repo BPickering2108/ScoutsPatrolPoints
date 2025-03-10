@@ -29,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "All patrol colours have been reset to default values successfully!";
     } catch (Exception $e) {
         // Handle errors and output a response
-        echo "Error resetting colours: " . $e->getMessage();
+        error_log($e->getMessage(), 0);
+        echo "An unexpected error occurred while resetting the patrol colours. Please try again later.";
     }
 
     $conn->close(); // Close the connection

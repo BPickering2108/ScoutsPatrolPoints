@@ -39,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Success message
         $response = "Colours updated successfully!";
     } catch (Exception $e) {
-        $response = "Error updating colours: " . $e->getMessage();
+        error_log($e->getMessage(), 0);
+        echo "An unexpected error occurred while updating the patrol colours. Please try again later.";
     }
 
     $conn->close(); // Close connection
