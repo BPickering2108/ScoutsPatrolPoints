@@ -151,9 +151,11 @@ if ($result_wed && $result_wed->num_rows > 0) {
 
             <!-- User Management -->
             <h2>User Management</h2>
-            <a href="editUser"><button type="button">Edit Existing User</button></a>
-            <!-- <a href="resetPassword"><button type="button">Reset User's Password</button></a> -->
-            <a href="createUser"><button type="button">Create New User</button></a>
+            <div class="button-container">
+                <a href="editUser"><button type="button">Edit Existing User</button></a>
+                <!-- <a href="resetPassword"><button type="button">Reset User's Password</button></a> -->
+                <a href="createUser"><button type="button">Create New User</button></a>
+            </div>
 
             <!-- Popup for Messages -->
             <div id="popup"></div>
