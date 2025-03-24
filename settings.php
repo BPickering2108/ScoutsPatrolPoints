@@ -64,73 +64,56 @@ if ($result_wed && $result_wed->num_rows > 0) {
             <!-- Update Colours Section -->
             <h2>Change Patrol Colours</h2>
             <form id="updateColoursForm" onsubmit="event.preventDefault(); updateColours();">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Patrol</th>
-                            <th>Day</th>
-                            <th>Colour</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Kestrel</td>
-                            <td>Monday</td>
-                            <td>
-                                <input type="color" id="kestrel_mon" name="kestrel_mon" value="<?= $monColours['Kestrel_colour'] ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Curlew</td>
-                            <td>Monday</td>
-                            <td>
-                                <input type="color" id="curlew_mon" name="curlew_mon" value="<?= $monColours['Curlew_colour'] ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Eagle</td>
-                            <td>Monday</td>
-                            <td>
-                                <input type="color" id="eagle_mon" name="eagle_mon" value="<?= $monColours['Eagle_colour'] ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Woodpecker</td>
-                            <td>Monday</td>
-                            <td>
-                                <input type="color" id="woodpecker_mon" name="woodpecker_mon" value="<?= $monColours['Woodpecker_colour'] ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kestrel</td>
-                            <td>Wednesday</td>
-                            <td>
-                                <input type="color" id="kestrel_wed" name="kestrel_wed" value="<?= $wedColours['Kestrel_colour'] ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Curlew</td>
-                            <td>Wednesday</td>
-                            <td>
-                                <input type="color" id="curlew_wed" name="curlew_wed" value="<?= $wedColours['Curlew_colour'] ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Eagle</td>
-                            <td>Wednesday</td>
-                            <td>
-                                <input type="color" id="eagle_wed" name="eagle_wed" value="<?= $wedColours['Eagle_colour'] ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Woodpecker</td>
-                            <td>Wednesday</td>
-                            <td>
-                                <input type="color" id="woodpecker_wed" name="woodpecker_wed" value="<?= $wedColours['Woodpecker_colour'] ?>">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Patrol</th>
+                        <th colspan="2">Colour</th>
+                    </tr>
+                    <tr>
+                        <th>Monday</th>
+                        <th>Wednesday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kestrel</td>
+                        <td>
+                            <input type="color" id="kestrel_mon" name="kestrel_mon" value="<?= $monColours['Kestrel_colour'] ?>">
+                        </td>
+                        <td>
+                            <input type="color" id="kestrel_wed" name="kestrel_wed" value="<?= $wedColours['Kestrel_colour'] ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Curlew</td>
+                        <td>
+                            <input type="color" id="curlew_mon" name="curlew_mon" value="<?= $monColours['Curlew_colour'] ?>">
+                        </td>
+                        <td>
+                            <input type="color" id="curlew_wed" name="curlew_wed" value="<?= $wedColours['Curlew_colour'] ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Eagle</td>
+                        <td>
+                            <input type="color" id="eagle_mon" name="eagle_mon" value="<?= $monColours['Eagle_colour'] ?>">
+                        </td>
+                        <td>
+                            <input type="color" id="eagle_wed" name="eagle_wed" value="<?= $wedColours['Eagle_colour'] ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Woodpecker</td>
+                        <td>
+                            <input type="color" id="woodpecker_mon" name="woodpecker_mon" value="<?= $monColours['Woodpecker_colour'] ?>">
+                        </td>
+                        <td>
+                            <input type="color" id="woodpecker_wed" name="woodpecker_wed" value="<?= $wedColours['Woodpecker_colour'] ?>">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
                 <button type="submit">Update Colours</button>
             </form>
 
