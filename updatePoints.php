@@ -1,17 +1,6 @@
 <?php
-include 'connection.php'; // Include your database connection
-
-// Start session only if none is active
-if (session_status() === PHP_SESSION_NONE) {
-    session_start(); // Start the session
-}
-
-// Check if the user is logged in
-if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
-    header("HTTP/1.1 401 Unauthorized");
-    echo "You must be logged in to perform this action.";
-    exit();
-}
+include 'connection.php'; // Include the database connection
+include 'auth_check.php'; // Ensure the user is logged in and has a valid CSRF token
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Get patrol, action, and page from AJAX request

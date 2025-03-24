@@ -10,6 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = trim($_POST["new_password"]);
     $confirm_password = trim($_POST["confirm_password"]);
 
+    if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Invalid CSRF token");
+    }
+
     if ($new_password === $confirm_password && !empty($new_password)) {
         // Hash the new password
         $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);

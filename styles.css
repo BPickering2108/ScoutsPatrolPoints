@@ -40,6 +40,36 @@ main {
     flex-direction: column;
 }
 
+/* Error Message Styling */
+.error-message {
+    color: red;
+    background-color: rgba(248, 215, 218, 0.9); /* Slightly transparent background */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #f5c6cb; /* Solid, thin border */
+    border-radius: 5px;
+    position: relative; /* Required for positioning the close button */
+    font-size: 14px;
+}
+
+/* Close button styling */
+.error-message .close-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.error-message .close-btn:hover {
+    color: darkred; /* Change color on hover */
+}
+
 /* Button Container Styling */
 .button-container {
     display: flex;
@@ -161,6 +191,105 @@ input[type="password"]:focus {
 .progress-label {
     margin-top: 10px;
     font-weight: bold;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+button[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* User edit table styling */
+.edit-user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.edit-user-table th, .edit-user-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.edit-user-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.edit-user-table input, .edit-user-table select {
+    width: 90%; /* Input fields take up most of the cell */
+    padding: 5px;
+    font-size: 14px;
+}
+
+.edit-user-table button img {
+    vertical-align: middle;
+}
+
+button.update-user-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.update-user-btn:hover {
+    background-color: #45a049;
+}
+
+button[name="delete_user"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button[name="delete_user"]:hover {
+    background-color: #d32f2f;
 }
 
 /* Header and Navigation */

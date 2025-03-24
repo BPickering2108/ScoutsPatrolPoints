@@ -24,5 +24,27 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     // Non-AJAX requests: Redirect to login page
     header("Location: login");
     exit();
+
+    // Validate CSRF token
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            // Check if the CSRF token has expired
+            if (!isset($_SESSION['csrf_token_expiry']) || time() > $_SESSION['csrf_token_expiry']) {
+                // Destroy the session to log the user out
+                session_unset();
+                session_destroy();
+                
+                // Redirect to login page
+                header("Location: login.php?error=csrf_expired");
+                exit();
+            }
+    
+            // Invalid token: Destroy the session
+            session_unset();
+            session_destroy();
+            header("Location: login.php?error=csrf_invalid");
+            exit();
+        }
+    }    
 }
 ?>

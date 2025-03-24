@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     include 'connection.php'; // Include database connection
+    include 'auth_check.php'; // Ensure the user is logged in and has a valid CSRF token
 
     // Get the 'day' value from POST data
     $day = $_POST['day'] ?? ''; // Use a default empty value in case 'day' is not set

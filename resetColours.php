@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     include 'connection.php'; // Include the database connection
+    include 'auth_check.php'; // Ensure the user is logged in and has a valid CSRF token
 
     try {
         // Define default colours
