@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <meta charset="UTF-8">
         <title>Account</title>
         <link rel="stylesheet" href="./styles.css">
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     </head>
     <body>
         <?php include 'header.php'; ?>

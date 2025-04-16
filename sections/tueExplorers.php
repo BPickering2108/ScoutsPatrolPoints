@@ -19,6 +19,7 @@ $title = $pageTitles[$day] ?? 'Patrol Points'; // Fallback title
 <head>
     <title><?= $title ?></title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 <body data-csrf="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
     <script src="/scripts/patrolPoints.js"></script>
