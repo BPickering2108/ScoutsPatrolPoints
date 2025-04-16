@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+require_once '../backend/connection.php';
 function sendPushoverNotification($message) {
                         $curl = curl_init();
                         curl_setopt_array($curl, [

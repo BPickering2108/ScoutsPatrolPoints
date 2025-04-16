@@ -1,8 +1,8 @@
 <?php
 session_start();
-include 'connection.php'; // Include the database connection
-include 'auth_check.php'; // Ensure the user is logged in and has a valid CSRF token
-include 'log_action.php';
+require_once 'connection.php'; // Include the database connection
+include 'authCheck.php'; // Ensure the user is logged in and has a valid CSRF token
+include '../logging/logAction.php';
 
 // Ensure only logged-in users with the "Section_Leadership" role can access this page
 $user_id = $_SESSION['user_id']; // Get the user ID from the session
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("sss", $username, $hashed_password, $role);
 
             if ($stmt->execute()) {
-                log_action('User created: ')
+                log_action('User created: ');
                 $success_message = "User created successfully with role: $role";
             } else {
                 $error_message = "Error: " . $stmt->error;

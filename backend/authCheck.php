@@ -25,26 +25,15 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
     header("Location: login");
     exit();
 
-    // Validate CSRF token
+    // Validate CSRF token for POST requests
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-            // Check if the CSRF token has expired
-            if (!isset($_SESSION['csrf_token_expiry']) || time() > $_SESSION['csrf_token_expiry']) {
-                // Destroy the session to log the user out
-                session_unset();
-                session_destroy();
-                
-                // Redirect to login page
-                header("Location: login.php?error=csrf_expired");
-                exit();
-            }
-    
-            // Invalid token: Destroy the session
-            session_unset();
-            session_destroy();
-            header("Location: login.php?error=csrf_invalid");
+        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== ($_SESSION['csrf_token'] ?? '')) {
+            // Expired or invalid token: Destroy the session
+            include 'logout.php';
             exit();
         }
-    }    
+    }  
 }
+
+include 'permissions.php'
 ?>

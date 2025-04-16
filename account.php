@@ -1,6 +1,6 @@
 <?php
-include 'connection.php'; // Include database connection
-include 'auth_check.php'; // Ensure the user is logged in
+require_once 'backend/connection.php'; // Include database connection
+include 'backend/authCheck.php'; // Ensure the user is logged in
 
 // Get the logged-in user's username
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'User';

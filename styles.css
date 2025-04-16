@@ -347,6 +347,14 @@ nav ul li a:hover {
     display: block;
 }
 
+nav ul li.logout {
+    margin-left: auto; /* Push the logout button to the far-right */
+}
+
+nav ul li.login {
+    margin-left: auto; /* Push the login button to the far-right */
+}
+
 /* Popups */
 #popup {
     display: none;

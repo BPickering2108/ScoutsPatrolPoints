@@ -13,9 +13,16 @@
         <h2>Patrol Points</h2>
         <main>
             <!-- Button Container -->
+            <h3>Scouts</h3>
             <div class="button-container">
-                <a href="monScouts.php">Monday Scouts</a>
-                <a href="wedScouts.php">Wednesday Scouts</a>
+                <a href="monScouts">Monday Scouts</a>
+                <a href="wedScouts">Wednesday Scouts</a>
+            </div>
+            <!-- Button Container -->
+            <h3>Explorers</h3>
+            <div class="button-container">
+                <a href="tueExplorers">Tuesday Explorers</a>
+                <a href="thurExplorers">Thursday Explorers</a>
             </div>
         </main>
         <?php include 'footer.php'; ?>

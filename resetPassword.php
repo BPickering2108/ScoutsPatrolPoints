@@ -1,7 +1,7 @@
 <?php
 session_start();
-include 'connection.php'; // Include the database connection
-include 'auth_check.php'; // Ensure the user is logged in and has a valid CSRF token
+require_once 'backend/connection.php'; // Include the database connection
+include 'backend/authCheck.php'; // Ensure the user is logged in and has a valid CSRF token
 
 // Ensure only logged-in users with the "Section_Leadership" role can access this page
 $user_id = $_SESSION['user_id']; // Get the user ID from the session

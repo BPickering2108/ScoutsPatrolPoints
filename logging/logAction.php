@@ -25,11 +25,12 @@ function logAction($action, $target_username = null, $details = null) {
     $log_entry .= " | IP: $ip_address | Host Country: $host_country" . PHP_EOL;
 
     // Path to your log file
-    $log_dir = __DIR__ . '/secure_logs/';
+    $log_dir = dirname(__DIR__) . '/secure_logs/';
     if (!is_dir($log_dir)) {
         mkdir($log_dir, 0755, true); // Create the directory if it doesn’t exist
     }
     $log_file = $log_dir . 'admin_logs.txt';
+    
 
 
     // Write to the log file

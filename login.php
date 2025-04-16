@@ -1,9 +1,6 @@
 <?php
-// Include the database connection file
-include 'connection.php';
-
-// Include logging
-include 'log_action.php';
+require_once 'backend/connection.php';
+include 'logging/logAction.php';
 
 session_start(); // Start the session
 
@@ -72,14 +69,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $script_name = basename(parse_url($redirect_page, PHP_URL_PATH));
             if (in_array($script_name, $backend_scripts)) {
                 // Redirect to the home page
-                $redirect_page = 'https://scoutpatrolpoints.pickering.cloud/';
+                $redirect_page = 'index.php';
             }
 
             // Clear the redirect_after_login variable
             unset($_SESSION['redirect_after_login']);
         } else {
             // Default to the home page
-            $redirect_page = 'https://scoutspatrolpoints.pickering.cloud/';
+            $redirect_page = 'index.php';
         }
 
         // Redirect to the determined page

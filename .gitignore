@@ -1,2 +1,4 @@
 \_public_html
 connection.php
+*.old
+todo.md

@@ -1,11 +1,26 @@
 RewriteEngine On
 
-# Handle .php files for specific pages
+# Redirect requests for section pages to the sections/ directory
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(index|login|monScouts|wedScouts|settings|create_user|account|auth_check|footer|header|resetPoints|updateColours|updatePoints|unauthorised|resetPassword)/?$ $1.php [L]
+RewriteRule ^(monScouts|tueExplorers|wedScouts|thurExplorers)/?$ sections/$1.php [L]
 
-# Ensure trailing slash for directories (excludes files and directories already existing)
+# Redirect backend files properly
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(authCheck|basePoints|connection|createUser|editUser|hardDelete|logout|permissions|resetColours|resetPoints|updateColours|updatePoints)/?$ backend/$1.php [L]
+
+# Redirect logging-related scripts
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(apiHelpers|logAction)/?$ logging/$1.php [L]
+
+# Handle other PHP files in root normally
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(index|login|settings|settingsColours|settingsPoints|account|unauthorised|userMgmt|resetPassword)/?$ $1.php [L]
+
+# Ensure trailing slash for directories (only when accessing folders)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.*[^/])$ /$1/ [R=301,L]

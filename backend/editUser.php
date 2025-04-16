@@ -1,8 +1,8 @@
 <?php
 session_start();
-include 'connection.php'; // Include the database connection
-include 'auth_check.php'; // Ensure the user is logged in and has a valid CSRF token
-include 'api_helpers.php';
+require_once 'connection.php'; // Include the database connection
+include 'authCheck.php'; // Ensure the user is logged in and has a valid CSRF token
+include '../logging/apiHelpers.php';
 
 // Ensure only logged-in users with the "Section_Leadership" role can access this page
 $user_id = $_SESSION['user_id']; // Get the user ID from the session
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle user deletion
     } elseif ($delete_user) {
         if ($username === 'Bradley_Pickering') {
-            $error_message = "No user found with the specified username."
+            $error_message = "No user found with the specified username.";
         } else{
             $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
             $stmt->bind_param("s", $username);
@@ -132,10 +132,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit Existing User</title>
-        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
-        <?php include 'header.php'; ?>
+        <?php include '../header.php'; ?>
         <h1>Edit Existing User</h1>
         <main>
             <!-- Display error or success messages -->
@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="text" id="username" name="username" placeholder="Enter username" required>
                             </td>
                             <td>
-                                <input type="password" id="new_password" name="new_password" placeholder="Enter new password" autocomplete="new-password">
+                                <input type="password" id="new_password" name="new_password" placeholder="Enter new password" autocomplete="set-password">
                             </td>
                             <td>
                                 <select id="role" name="role">
@@ -186,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
             </div>
         </main>
-        <?php include 'footer.php'; ?>
+        <?php include '../footer.php'; ?>
     </body>
 </html>
 

@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    include 'connection.php'; // Include database connection
-    include 'auth_check.php'; // Ensure the user is logged in and has a valid CSRF token
+    require_once 'connection.php'; // Include database connection
+    include 'authCheck.php'; // Ensure the user is logged in and has a valid CSRF token
 
     $response = ""; // Initialize response
 
@@ -31,8 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt_mon->bind_param("ssss", $kestrel_mon, $curlew_mon, $eagle_mon, $woodpecker_mon);
         $stmt_mon->execute();
 
+        // Update Tuesday colours
+        $query_wed = "UPDATE tuePointValues SET Kestrel_colour = ?, Curlew_colour = ?, Eagle_colour = ?, Woodpecker_colour = ?";
+        $stmt_wed = $conn->prepare($query_wed);
+        $stmt_wed->bind_param("ssss", $kestrel_wed, $curlew_wed, $eagle_wed, $woodpecker_wed);
+        $stmt_wed->execute();
+
         // Update Wednesday colours
         $query_wed = "UPDATE wedPointValues SET Kestrel_colour = ?, Curlew_colour = ?, Eagle_colour = ?, Woodpecker_colour = ?";
+        $stmt_wed = $conn->prepare($query_wed);
+        $stmt_wed->bind_param("ssss", $kestrel_wed, $curlew_wed, $eagle_wed, $woodpecker_wed);
+        $stmt_wed->execute();
+
+        // Update Thursday colours
+        $query_wed = "UPDATE thurPointValues SET Kestrel_colour = ?, Curlew_colour = ?, Eagle_colour = ?, Woodpecker_colour = ?";
         $stmt_wed = $conn->prepare($query_wed);
         $stmt_wed->bind_param("ssss", $kestrel_wed, $curlew_wed, $eagle_wed, $woodpecker_wed);
         $stmt_wed->execute();
